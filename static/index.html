@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Recipe Chatbot</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .chat-container {
+      width: 100%;
+      max-width: 400px;
+      height: 550px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .chat-header {
+      background: #4CAF50;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    #chatbox {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      background: #f9f9f9;
+    }
+    .message {
+      margin: 10px 0;
+      display: flex;
+    }
+    .message.user {
+      justify-content: flex-end;
+    }
+    .message.bot {
+      justify-content: flex-start;
+    }
+    .bubble {
+      max-width: 70%;
+      padding: 10px 14px;
+      border-radius: 15px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    .user .bubble {
+      background: #4CAF50;
+      color: #fff;
+      border-bottom-right-radius: 0;
+    }
+    .bot .bubble {
+      background: #e0e0e0;
+      color: #333;
+      border-bottom-left-radius: 0;
+    }
+    .chat-footer {
+      display: flex;
+      padding: 10px;
+      background: #fff;
+      border-top: 1px solid #ddd;
+    }
+    #user-input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    #send-btn {
+      margin-left: 10px;
+      padding: 10px 15px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    #send-btn:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">Recipe Chatbot</div>
+    <div id="chatbox"></div>
+    <div class="chat-footer">
+      <input type="text" id="user-input" placeholder="Enter ingredients..." />
+      <button id="send-btn">Send</button>
+    </div>
+  </div>
+
+  <script>
+    const chatbox = document.getElementById('chatbox');
+    const userInput = document.getElementById('user-input');
+    const sendBtn = document.getElementById('send-btn');
+
+    sendBtn.onclick = async () => {
+      const userText = userInput.value;
+      if (!userText) return;
+
+      // Append user message
+      chatbox.innerHTML += `
+        <div class="message user">
+          <div class="bubble">You: ${userText}</div>
+        </div>`;
+      userInput.value = '';
+
+      // Fetch response from backend
+      const response = await fetch(`/generate/?ingredients=${encodeURIComponent(userText)}`);
+      const data = await response.json();
+
+      // Append bot message
+      chatbox.innerHTML += `
+        <div class="message bot">
+          <div class="bubble">Bot: ${data.recipe}</div>
+        </div>`;
+
+      chatbox.scrollTop = chatbox.scrollHeight;
+    };
+  </script>
+</body>
+</html>
