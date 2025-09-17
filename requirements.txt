@@ -1,0 +1,10 @@
+streamlit
+rapidfuzz
+fastapi
+uvicorn[standard]
+pydantic
+requests
+transformers
+datasets
+accelerate
+torch
