@@ -27,7 +27,7 @@ A web-based chatbot that suggests recipes based on ingredients you provide. The 
 - Swagger API Docs at `/docs`
 
 ### 🎨 Modern UI
-- Responsive, clean, and user-friendly
+
   <img width="549" height="735" alt="image" src="https://github.com/user-attachments/assets/05a7533a-4910-4356-943d-93e520993896" />
   <img width="536" height="727" alt="image" src="https://github.com/user-attachments/assets/735b725d-1a3b-4e1f-850e-4c1ba93a8f18" />
   <img width="531" height="732" alt="image" src="https://github.com/user-attachments/assets/39614d89-4550-49fe-86e5-9f0598778f98" />
