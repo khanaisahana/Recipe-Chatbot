@@ -28,42 +28,42 @@ A web-based chatbot that suggests recipes based on ingredients you provide. The 
 ## Installation
 
 ## 1. Clone the repository
-
+```bash
 git clone <repo-url>
 cd <repo-folder>
-
+```
 ## 2.Create a virtual environment
-
+```bash
 python -m venv venv
 source venv/bin/activate  # Linux/Mac
 venv\Scripts\activate     # Windows
-
+```
 
 ## 3.Install dependencies
-
+```bash
 pip install fastapi uvicorn transformers datasets torch
-
+````
 ## Fine-tuning the Model
 
 1.Place your dataset train.csv in the root folder with the following format:
-
+```
 ingredients	recipe
 "egg, onion"	"Omelette with onions..."
 "rice, tomato"	"Tomato rice..."
-
+```
 2.Run the fine-tuning script:
-
+```bash
 python fine_tune.py
-
+```
 
 3.The fine-tuned model will be saved in ./fine_tuned_model.
 
 ## Running the App
 
 1.Start the FastAPI server:
-
+```bash
 uvicorn app:app --reload
-
+```
 
 2.Open your browser and go to:
 
@@ -85,6 +85,8 @@ Adjust max_length and num_train_epochs in fine_tune.py depending on dataset size
 
 For production, consider adding input validation and more sophisticated frontend features.
 
-## Developer
+---
 
-Sahana Khanai
+## 🧑‍💻 Author
+
+Developed by **Sahana Khanai**
