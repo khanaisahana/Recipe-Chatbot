@@ -13,7 +13,7 @@ A web-based chatbot that suggests recipes based on ingredients you provide. The 
 ---
 
 ## Project Structure
-
+```
 ├── app.py # FastAPI backend
 ├── fine_tune.py # Script to fine-tune the T5 model
 ├── train.csv # Dataset with ingredients and recipes
@@ -21,7 +21,7 @@ A web-based chatbot that suggests recipes based on ingredients you provide. The 
 ├── static/
 │ └── index.html # Frontend HTML
 └── logs/ # Logs of user interactions
-
+```
 
 ---
 
